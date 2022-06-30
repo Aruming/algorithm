@@ -1,22 +1,20 @@
 import java.util.Scanner;
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int c = sc.nextInt();
-        int result = a*b*c;
-
         int[] num = new int[10];
-        while(result>0){
-            num[result%10]++;
-            result/=10;
-        }
+        int[] arr = new int[42];
+        int result = 0;
 
-        for(int i=0;i<10;i++){
-            System.out.println(num[i]);
+        for (int i = 0; i < 10; i++) {
+            num[i] = sc.nextInt();
+            arr[num[i] % 42]++;
         }
-
+        for (int i = 0; i < 42; i++) {
+            if (arr[i] != 0)
+                result++;
+        }
+        System.out.println(result);
     }
 }

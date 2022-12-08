@@ -1,21 +1,25 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int answer = 0;
+        String answer = "";
         Scanner sc = new Scanner(System.in);
 
-        String dice = sc.nextLine();
-        String[] result = dice.split(" ");
-        Arrays.sort(result);
+        int totalPrice = sc.nextInt();
+        int n = sc.nextInt();
 
-        if(result[0].equals(result[2])){
-            answer = 10000 + 1000 * Integer.parseInt(result[2]);
-        } else if (result[0].equals(result[1]) || result[1].equals(result[2])) {
-            answer = 1000 + 100 * Integer.parseInt(result[1]);
-        }else {
-            answer = 100 * Integer.parseInt(result[2]);
+        int calcPrice = 0;
+
+        for(int i=0;i<n;i++){
+            int price = sc.nextInt();
+            int cnt = sc.nextInt();
+            calcPrice += price * cnt;
+        }
+
+        if(calcPrice == totalPrice){
+            answer = "Yes";
+        }else{
+            answer = "No";
         }
 
 

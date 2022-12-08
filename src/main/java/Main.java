@@ -2,25 +2,23 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        String answer = "";
         Scanner sc = new Scanner(System.in);
-        //배열 크기 입력
-        int n = sc.nextInt();
-        double[] score = new double[n];
-        double max = 0;
+        String pieces = sc.nextLine();
 
-        //배열 값 입력, 배열 최댓값 구하기
-        for(int i=0;i<n;i++){
-            score[i] = sc.nextInt();
-            if(max<score[i])
-                max=score[i];
+        String[] piece = pieces.split(" ");
+        int[] num = {1, 1, 2, 2, 2, 8};
+
+        int own = 0;
+        for(int i=0;i<piece.length;i++){
+            own = Integer.parseInt(piece[i]);
+            answer += num[i]-own;
+            if(i == piece.length-1){
+                break;
+            }
+            answer += " ";
         }
 
-        //수정된 배열 값의 합
-        double sum=0;
-        for(int i=0;i<n;i++){
-            sum+=(score[i]/max)*100;
-        }
-        System.out.println(sum/n);
-
+        System.out.println(answer);
     }
 }

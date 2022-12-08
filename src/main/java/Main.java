@@ -2,22 +2,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int answer = 0;
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int[] nums = new int[n];
+        int[] nums = new int[30];
 
-        for(int i=0;i<n;i++){
-            nums[i] = sc.nextInt();
+        for(int i=0;i<28;i++){
+            int n = sc.nextInt();
+            nums[n-1] = 1;
         }
 
-        int findNum = sc.nextInt();
-        for(int i=0;i<n;i++){
-            if(nums[i] == findNum) answer++;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] == 0){
+                System.out.println(i+1);
+            }
         }
-
-
-        System.out.println(answer);
     }
 }

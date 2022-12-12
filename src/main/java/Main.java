@@ -4,23 +4,30 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[][] nums = new int[9][9];
+        int[][] base = new int [100][100];
 
-        int max = 0;
-        int max_i = 0;
-        int max_j = 0;
-        for(int i=0;i<9;i++){
-            for(int j=0;j<9;j++){
-                nums[i][j] = sc.nextInt();
-                if(nums[i][j]>max){
-                    max = nums[i][j];
-                    max_i = i;
-                    max_j = j;
+        int n = sc.nextInt();
+
+        for(int i=0;i<n;i++){
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+
+            for(int j=x;j<x+10;j++){
+                for(int k=y;k<y+10;k++){
+                    base[j][k]++;
                 }
             }
         }
 
-        System.out.println(max);
-        System.out.println((max_i+1)+" "+(max_j+1));
+        int cnt = 0;
+        for(int i=0;i<100;i++){
+            for(int j=0;j<100;j++){
+                if(base[i][j]>0){
+                    cnt++;
+                }
+            }
+        }
+
+        System.out.println(cnt);
     }
 }

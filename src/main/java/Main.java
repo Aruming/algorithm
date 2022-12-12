@@ -4,32 +4,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        int[][] nums = new int[9][9];
 
-        int[][] a = new int[n][m];
-        int[][] b = new int[n][m];
-
-        for (int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                a[i][j] = sc.nextInt();
+        int max = 0;
+        int max_i = 0;
+        int max_j = 0;
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                nums[i][j] = sc.nextInt();
+                if(nums[i][j]>max){
+                    max = nums[i][j];
+                    max_i = i;
+                    max_j = j;
+                }
             }
         }
 
-        int[][] result = new int[n][m];
-
-        for (int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                b[i][j] = sc.nextInt();
-                result[i][j] = a[i][j] + b[i][j];
-            }
-        }
-
-        for (int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                System.out.print(result[i][j]+" ");
-            }
-            System.out.println("");
-        }
+        System.out.println(max);
+        System.out.println((max_i+1)+" "+(max_j+1));
     }
 }

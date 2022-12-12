@@ -5,17 +5,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] nums = new int[5];
+        int n = sc.nextInt();
+        int k = sc.nextInt();
 
-        int sum = 0;
-        for(int i=0;i<5;i++){
-            nums[i] = sc.nextInt();
-            sum += nums[i];
+        int[] score = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            score[i] = sc.nextInt();
         }
+        Arrays.sort(score);
 
-        Arrays.sort(nums);
-
-        System.out.println(sum/5);
-        System.out.println(nums[2]);
+        System.out.println(score[n-k]);
     }
 }

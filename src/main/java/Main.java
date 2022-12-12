@@ -5,17 +5,17 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int[] nums = new int[n];
+        int[] nums = new int[5];
 
-        for(int i=0;i<n;i++){
+        int sum = 0;
+        for(int i=0;i<5;i++){
             nums[i] = sc.nextInt();
+            sum += nums[i];
         }
 
         Arrays.sort(nums);
 
-        for(int i=0;i<n;i++){
-            System.out.println(nums[i]);
-        }
+        System.out.println(sum/5);
+        System.out.println(nums[2]);
     }
 }

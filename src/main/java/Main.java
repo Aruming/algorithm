@@ -1,25 +1,21 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-        int n = Integer.parseInt(br.readLine());
+        String s = Integer.toString(n);
+        String[] nums = s.split("");
+        Arrays.sort(nums);
 
-        int[] cnt = new int[10001];
-        for(int i=0;i<n;i++){
-            cnt[Integer.parseInt(br.readLine())]++;
+        s = "";
+        for(int i = nums.length-1;i>=0;i--){
+            s += nums[i];
         }
 
-        for(int i=0;i<10001;i++){
-            while(cnt[i]>0){
-                sb.append(i).append('\n');
-                cnt[i]--;
-            }
-        }
-
-        System.out.println(sb);
+        int answer = Integer.parseInt(s);
+        System.out.println(answer);
     }
 }

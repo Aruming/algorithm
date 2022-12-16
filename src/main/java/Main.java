@@ -15,10 +15,10 @@ public class Main {
         }
 
         Arrays.sort(point, (e1, e2) -> {
-            if(e1[0] == e2[0]) {
-                return e1[1] - e2[1];
-            } else {
+            if(e1[1] == e2[1]) {
                 return e1[0] - e2[0];
+            } else {
+                return e1[1] - e2[1];
             }
         });
 

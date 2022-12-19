@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -7,23 +8,28 @@ public class Main {
 
         int n = sc.nextInt();
 
-        int[][] point = new int[n][2];
+        String[] words = new String[n];
+        sc.nextLine();
 
-        for(int i=0;i<n;i++) {
-            point[i][0] = sc.nextInt();
-            point[i][1] = sc.nextInt();
+        for(int i=0;i<n;i++){
+            words[i] = sc.nextLine();
         }
 
-        Arrays.sort(point, (e1, e2) -> {
-            if(e1[1] == e2[1]) {
-                return e1[0] - e2[0];
-            } else {
-                return e1[1] - e2[1];
+        Arrays.sort(words, new Comparator<String>() {
+            public int compare(String s1, String s2) {
+                if (s1.length() == s2.length()) {
+                    return s1.compareTo(s2);
+                }else {
+                    return s1.length() - s2.length();
+                }
             }
         });
 
-        for(int i=0;i<n;i++) {
-            System.out.println(point[i][0] + " " + point[i][1]);
+        System.out.println(words[0]);
+        for (int i=1;i<n;i++) {
+            if (!words[i].equals(words[i-1])) {
+                System.out.println(words[i]);
+            }
         }
     }
 }

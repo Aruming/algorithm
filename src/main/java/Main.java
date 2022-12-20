@@ -1,30 +1,35 @@
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception{
         Scanner sc = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
 
         int n = sc.nextInt();
 
-        sc.nextLine();
-        String[][] info = new String[n][2];
-
+        int[] arr = new int[n];
+        int[] sortedArr = new int[n];
         for(int i=0;i<n;i++){
-            info[i][0] = sc.next();
-            info[i][1] = sc.next();
+            arr[i] = sortedArr[i] = sc.nextInt();
         }
+        Arrays.sort(sortedArr);
 
-        Arrays.sort(info, new Comparator<String[]>() {
-            @Override
-            public int compare(String[] o1, String[] o2) {
-                return Integer.parseInt(o1[0]) - Integer.parseInt(o2[0]);
+        Map<Integer, Integer> rankingMap = new HashMap<>();
+        int rank = 0;
+        for(int i=0;i<n;i++){
+            if(!rankingMap.containsKey(sortedArr[i])){
+                rankingMap.put(sortedArr[i], rank);
+                rank++;
             }
-        });
+        }
 
         for(int i=0;i<n;i++){
-            System.out.println(info[i][0]+" "+info[i][1]);
+            sb.append(rankingMap.get(arr[i])).append(" ");
         }
+
+        System.out.println(sb);
     }
 }

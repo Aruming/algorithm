@@ -1,19 +1,20 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception{
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
-        int n = sc.nextInt();
+        int n = Integer.parseInt(br.readLine());
 
         int[] arr = new int[n];
         int[] sortedArr = new int[n];
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         for(int i=0;i<n;i++){
-            arr[i] = sortedArr[i] = sc.nextInt();
+            arr[i] = sortedArr[i] = Integer.parseInt(st.nextToken());
         }
         Arrays.sort(sortedArr);
 

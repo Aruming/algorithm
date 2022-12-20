@@ -8,28 +8,23 @@ public class Main {
 
         int n = sc.nextInt();
 
-        String[] words = new String[n];
         sc.nextLine();
+        String[][] info = new String[n][2];
 
         for(int i=0;i<n;i++){
-            words[i] = sc.nextLine();
+            info[i][0] = sc.next();
+            info[i][1] = sc.next();
         }
 
-        Arrays.sort(words, new Comparator<String>() {
-            public int compare(String s1, String s2) {
-                if (s1.length() == s2.length()) {
-                    return s1.compareTo(s2);
-                }else {
-                    return s1.length() - s2.length();
-                }
+        Arrays.sort(info, new Comparator<String[]>() {
+            @Override
+            public int compare(String[] o1, String[] o2) {
+                return Integer.parseInt(o1[0]) - Integer.parseInt(o2[0]);
             }
         });
 
-        System.out.println(words[0]);
-        for (int i=1;i<n;i++) {
-            if (!words[i].equals(words[i-1])) {
-                System.out.println(words[i]);
-            }
+        for(int i=0;i<n;i++){
+            System.out.println(info[i][0]+" "+info[i][1]);
         }
     }
 }

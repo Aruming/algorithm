@@ -1,67 +1,56 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main{
-    private static int[] tmp;
-    private static int cnt = 0;
-    private static int k;
-    private static int result = -1;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        int n = Integer.parseInt(br.readLine());
+        int[] cards = new int[n];
 
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        k = sc.nextInt();
-
-        int[] arr = new int[n];
-        tmp = new int[n];
+        StringTokenizer st = new StringTokenizer(br.readLine());
         for(int i=0;i<n;i++){
-            arr[i] = sc.nextInt();
+            cards[i] = Integer.parseInt(st.nextToken());
+        }
+        Arrays.sort(cards);
+
+        int m = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        for (int i=0;i<m;i++){
+            int num = Integer.parseInt(st.nextToken());
+            boolean result = binarySearch(cards, num);
+
+            if(result == true){
+                bw.write("1 ");
+            }else{
+                bw.write("0 ");
+            }
         }
 
-        sc.close();
-
-        merge_sort(arr, 0, arr.length-1);
-        System.out.println(result);
+        bw.close();
+        br.close();
     }
 
-    private static void merge_sort(int[] arr, int p, int r) {
-        if(p < r){
-            int q = (p + r) / 2;
-            merge_sort(arr, p, q);
-            merge_sort(arr, q+1, r);
-            merge(arr, p, q, r);
-        }
-    }
+    public static boolean binarySearch(int[] cards, int num){
+        int start = 0;
+        int end = cards.length - 1;
+        int mid = (start + end) / 2;
 
-    private static void merge(int[] arr, int p, int q, int r) {
-        int i = p;
-        int j = q + 1;
-        int t = 0;
-
-        while (i <= q && j <= r){
-            if(arr[i] <= arr[j]){
-                tmp[t++] = arr[i++];
+        while (start <= end){
+            if(cards[mid] == num){
+                return true;
             }
-            else{
-                tmp[t++] = arr[j++];
+
+            if(cards[mid] > num){
+                end = mid - 1;
+            }else {
+                start = mid + 1;
             }
-        }
 
-        while (i <= q){
-            tmp[t++] = arr[i++];
+            mid = (start + end) / 2;
         }
-
-        while (j <= r){
-            tmp[t++] = arr[j++];
-        }
-
-        i = p; t = 0;
-        while (i <= r){
-            cnt++;
-            if(cnt == k){
-                result = tmp[t];
-                break;
-            }
-            arr[i++] = tmp[t++];
-        }
+        return false;
     }
 }

@@ -4,10 +4,12 @@ public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-        long a = sc.nextLong();
-        long b = sc.nextLong();
-        long c = sc.nextLong();
+        int n = sc.nextInt();
 
-        System.out.println(a+b+c);
+        for(int i=0;i<n/4;i++){
+            System.out.print("long ");
+        }
+
+        System.out.println("int");
     }
 }

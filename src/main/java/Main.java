@@ -5,11 +5,26 @@ public class Main{
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
+        int m = sc.nextInt();
 
-        for(int i=0;i<n/4;i++){
-            System.out.print("long ");
+        int[] basket = new int[n];
+
+        for(int i=0;i<basket.length;i++){
+            basket[i] = 0;
         }
 
-        System.out.println("int");
+        for(int i=0; i<m; i++){
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int c = sc.nextInt();
+
+            for(int j = a-1; j<=b-1; j++){
+                basket[j] = c;
+            }
+        }
+
+        for(int i=0;i<basket.length;i++){
+            System.out.print(basket[i]+" ");
+        }
     }
 }

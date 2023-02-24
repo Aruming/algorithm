@@ -10,17 +10,17 @@ public class Main{
         int[] basket = new int[n];
 
         for(int i=0;i<basket.length;i++){
-            basket[i] = 0;
+            basket[i] = i+1;
         }
 
         for(int i=0; i<m; i++){
             int a = sc.nextInt();
             int b = sc.nextInt();
-            int c = sc.nextInt();
+            int tmp = 0;
 
-            for(int j = a-1; j<=b-1; j++){
-                basket[j] = c;
-            }
+            tmp = basket[a-1];
+            basket[a-1] = basket[b-1];
+            basket[b-1] = tmp;
         }
 
         for(int i=0;i<basket.length;i++){

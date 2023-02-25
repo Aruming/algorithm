@@ -18,9 +18,25 @@ public class Main{
             int b = sc.nextInt();
             int tmp = 0;
 
-            tmp = basket[a-1];
-            basket[a-1] = basket[b-1];
-            basket[b-1] = tmp;
+            if((b-a)%2 == 0){
+                while (a!=b){
+                    tmp = basket[a-1];
+                    basket[a-1] = basket[b-1];
+                    basket[b-1] = tmp;
+
+                    a++;
+                    b--;
+                }
+            }else{
+                while (a<b){
+                    tmp = basket[a-1];
+                    basket[a-1] = basket[b-1];
+                    basket[b-1] = tmp;
+
+                    a++;
+                    b--;
+                }
+            }
         }
 
         for(int i=0;i<basket.length;i++){

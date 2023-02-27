@@ -4,29 +4,22 @@ public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-        char[][] words = new char[5][15];
+        while (true){
+            int a = sc.nextInt();
+            int b = sc.nextInt();
 
-        for (int i=0;i<5;i++){
-            String s = sc.next();
-            int len = 0;
+            if(a == 0 && b == 0){
+                break;
+            }
 
-            for (int j=0;j<s.length();j++){
-                words[i][j] = s.charAt(j);
+            if(a%b == 0){
+                System.out.println("multiple");
+            } else if (b % a == 0) {
+                System.out.println("factor");
+            } else{
+                System.out.println("neither");
             }
         }
-
-        String answer = "";
-        for(int i=0;i<15;i++){
-            for(int j=0;j<5;j++){
-                if(words[j][i] == '\0'){
-                    continue;
-                }else{
-                    answer += words[j][i];
-                }
-            }
-        }
-
-        System.out.println(answer);
 
         sc.close();
     }

@@ -4,22 +4,28 @@ public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-        while (true){
-            int a = sc.nextInt();
-            int b = sc.nextInt();
+       int n = sc.nextInt();
+       int k = sc.nextInt();
 
-            if(a == 0 && b == 0){
-                break;
-            }
+       int num = 1;
+       int cnt = 0;
+       while (num <= n){
+           if(n%num==0){
+               cnt++;
+           }
 
-            if(a%b == 0){
-                System.out.println("multiple");
-            } else if (b % a == 0) {
-                System.out.println("factor");
-            } else{
-                System.out.println("neither");
-            }
-        }
+           if(cnt == k){
+               break;
+           }
+
+           num++;
+       }
+
+       if(cnt < k){
+           System.out.println(0);
+       }else{
+           System.out.println(num);
+       }
 
         sc.close();
     }

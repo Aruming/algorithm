@@ -1,30 +1,41 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-       int n = sc.nextInt();
-       int k = sc.nextInt();
+       while (true){
+           int n = sc.nextInt();
+           int num = 1;
+           int sum = 0;
 
-       int num = 1;
-       int cnt = 0;
-       while (num <= n){
-           if(n%num==0){
-               cnt++;
-           }
-
-           if(cnt == k){
+           if(n == -1){
                break;
            }
 
-           num++;
-       }
+           List<Integer> divs = new ArrayList<>();
+           while (num<n){
+               if(n%num == 0){
+                   divs.add(num);
+                   sum+=num;
+               }
+               num++;
+           }
 
-       if(cnt < k){
-           System.out.println(0);
-       }else{
-           System.out.println(num);
+           if(sum == n){
+               System.out.print(n + " = ");
+               for(int i=0;i<divs.size();i++){
+                   if (i == divs.size()-1){
+                       System.out.println(divs.get(i));
+                   }else{
+                       System.out.print(divs.get(i) + " + ");
+                   }
+               }
+           }else{
+               System.out.println(n + " is NOT perfect.");
+           }
        }
 
         sc.close();

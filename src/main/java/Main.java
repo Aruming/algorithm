@@ -1,42 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-       while (true){
-           int n = sc.nextInt();
-           int num = 1;
-           int sum = 0;
+        int n = sc.nextInt();
+        int m = sc.nextInt();
 
-           if(n == -1){
-               break;
-           }
+        HashMap<String, Integer> poketmons_si = new HashMap<>();
+        HashMap<Integer, String> poketmons_is = new HashMap<>();
 
-           List<Integer> divs = new ArrayList<>();
-           while (num<n){
-               if(n%num == 0){
-                   divs.add(num);
-                   sum+=num;
-               }
-               num++;
-           }
+        for(int i=0;i<n;i++){
+            String name = sc.next();
+            poketmons_si.put(name, i+1);
+            poketmons_is.put(i+1, name);
+        }
 
-           if(sum == n){
-               System.out.print(n + " = ");
-               for(int i=0;i<divs.size();i++){
-                   if (i == divs.size()-1){
-                       System.out.println(divs.get(i));
-                   }else{
-                       System.out.print(divs.get(i) + " + ");
-                   }
-               }
-           }else{
-               System.out.println(n + " is NOT perfect.");
-           }
-       }
+        for(int i=0;i<m;i++){
+            if(sc.hasNextInt()){
+                System.out.println(poketmons_is.get(sc.nextInt()));
+            }else{
+                System.out.println(poketmons_si.get(sc.next()));
+            }
+        }
 
         sc.close();
     }

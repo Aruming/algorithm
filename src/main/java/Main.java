@@ -4,27 +4,32 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
 
         int n = sc.nextInt();
-        int m = sc.nextInt();
-
-        HashMap<String, Integer> poketmons_si = new HashMap<>();
-        HashMap<Integer, String> poketmons_is = new HashMap<>();
-
+        HashMap<Integer, Integer> cards = new HashMap<>();
         for(int i=0;i<n;i++){
-            String name = sc.next();
-            poketmons_si.put(name, i+1);
-            poketmons_is.put(i+1, name);
-        }
+            int num = sc.nextInt();
 
-        for(int i=0;i<m;i++){
-            if(sc.hasNextInt()){
-                System.out.println(poketmons_is.get(sc.nextInt()));
+            if(cards.containsKey(num)){
+                cards.put(num, cards.get(num)+1);
             }else{
-                System.out.println(poketmons_si.get(sc.next()));
+                cards.put(num, 1);
             }
         }
 
+        int m = sc.nextInt();
+
+        for(int i=0;i<m;i++){
+            int print = sc.nextInt();
+            if(cards.containsKey(print)){
+                sb.append(cards.get(print)).append(" ");
+            }else {
+                sb.append(0).append(" ");;
+            }
+        }
+
+        System.out.println(sb);
         sc.close();
     }
 }
